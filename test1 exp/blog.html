@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qitchen - Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;700&family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Noto Serif Georgian', serif;
+      background-color: #ffffff;
+      color: #111111;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Source Serif 4', serif;
+      color: #111;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #000;
+    }
+
+    .navbar {
+      background-color: #111;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .navbar .logo span {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .menu-items {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .menu-items li a {
+      color: #ccc;
+      font-weight: 600;
+    }
+
+    .menu-items li a:hover {
+      color: #fff;
+    }
+
+    .hamburger-lines {
+      display: none;
+    }
+
+    .search-bar {
+      padding: 1rem 2rem;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      padding: 0.5rem;
+      width: 300px;
+      border: 1px solid #999;
+      background-color: #fff;
+      color: #111;
+    }
+
+    .search-bar button {
+      padding: 0.5rem 1rem;
+      background-color: #111;
+      color: #fff;
+      border: none;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+
+    .blog-section {
+      padding: 2rem;
+      background-color: #fafafa;
+    }
+
+    .blog-post {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .blog-post img {
+      width: 100%;
+      height: auto;
+    }
+
+    .blog-content {
+      padding: 1rem;
+    }
+
+    .blog-date {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .blog-read-more {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #111;
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    .blog-read-more:hover {
+      background-color: #000;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .page-link {
+      padding: 0.5rem 1rem;
+      color: #333;
+      margin: 0 5px;
+      border: 1px solid #aaa;
+      background-color: #eee;
+    }
+
+    .page-link.active,
+    .page-link:hover {
+      background-color: #111;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #111;
+      color: #ccc;
+      padding: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-section h3 {
+      color: #fff;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #ccc;
+      margin: 5px 0;
+    }
+
+    .footer-section a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid #444;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo1.png" alt="Qitchen Logo" style="height: 40px; vertical-align: middle;">
+      <span>Qitchen</span>
+    </div>
+    <ul class="menu-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger-lines">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </nav>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search blog posts...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+  </div>
+
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="blog-container">
+         <div class="blog-post">
+          <img src="images/1.jpg" alt="Blog Post 1">
+          <div class="blog-content">
+            <h2>Pan-Seared Chicken Cutlet with Steamed Broccoli & Pink Salt</h2>
+            <p class="blog-date">October 10, 2025</p>
+            <p class="blog-excerpt">
+              Sometimes, simple is best. This pan-seared chicken cutlet and vibrant steamed broccoli, sprinkled with pink Himalayan salt, is proof. The golden-brown chicken is juicy and flavorful, perfectly complemented by the tender broccoli. It's weeknight elegance: quick, easy, and satisfying. Ditch the takeout and embrace the beauty of well-prepared basics!</p>
+            </p>
+            <a href="https://pinchofyum.com/buffalo-chicken-burgers-with-whipped-feta-spread" target="_blank" class="btn btn-primary blog-read-more">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="blog-post">
+          <img src="images/2.jpg" alt="Blog Post 2">
+          <div class="blog-content">
+            <h2>Sweet Quick Vegetable Stir-Fry with Baby Corn</h2>
+            <p class="blog-date">October 5, 2025</p>
+            <p class="blog-excerpt">
+              Need a vibrant veggie fix? This quick stir-fry, packed with colorful peppers, tender broccoli, crisp green beans, and sweet baby corn, is your answer! Sautéed to perfection in a light sauce, it's a flavor explosion that's both healthy and satisfying. Perfect as a side dish or a light meal, this stir-fry is proof that getting your veggies in can be delicious and easy. Get ready to crunch your way to happiness!</p>
+            </p>
+            <a href="https://pinchofyum.com/sweet-potato-soup-with-roasted-cauliflower-crumbles" target="_blank" class="btn btn-primary blog-read-more">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="blog-post">
+          <img src="images/3.jpg" alt="Blog Post 3">
+          <div class="blog-content">
+            <h2>Sesame Chicken Stir-Fry with Peppers</h2>
+            <p class="blog-date">September 28, 2024</p>
+            <p class="blog-excerpt">
+              Craving a quick and satisfying meal? This sesame chicken stir-fry is calling your name! Tender chicken and colorful bell peppers are coated in a savory-sweet sesame sauce, then sprinkled with toasted sesame seeds for added crunch and flavor. It's a one-pan wonder that's ready in minutes, perfect for busy weeknights. </p>
+            <a href="https://pinchofyum.com/french-toast-crepes" target="_blank" class="btn btn-primary blog-read-more">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Post 4 -->
+        <div class="blog-post">
+          <img src="images/4.jpg" alt="Blog Post 4">
+          <div class="blog-content">
+            <h2>Poppy Seed Chocolate Cake</h2>
+            <p class="blog-date">September 20, 2024</p>
+            <p class="blog-excerpt">
+              This simple slice of poppy seed cake on a black plate is pure elegance. The white frosting, dark seeds, nuts, and dried fruit create a perfect blend of textures and subtle flavors. It's a delightful treat, perfect with coffee or tea. Highly recommended!</p>
+            <a href="https://pinchofyum.com/scallion-pancake-with-eggs" target="_blank" class="btn btn-primary blog-read-more">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Post 5 -->
+        <div class="blog-post">
+          <img src="images/5.jpg" alt="Blog Post 5">
+          <div class="blog-content">
+            <h2>Raspberry & Lemon Cream Cake</h2>
+            <p class="blog-date">September 15, 2023</p>
+            <p class="blog-excerpt">
+              Need a little sweetness in your life? This raspberry and lemon cream cake is the answer. The tangy lemon cake layers are perfectly balanced by the creamy, dreamy raspberry filling. Topped with a delicate cream frosting and a beautiful berry detail, it's a dessert that's as stunning as it is delicious.</p>
+            <a href="https://pinchofyum.com/sunday-chili" target="_blank" class="btn btn-primary blog-read-more">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Post 6 -->
+        <div class="blog-post">
+          <img src="images/6.jpg" alt="Blog Post 6">
+          <div class="blog-content">
+            <h2>Trio Toast with Avacado and Cottage Cheese Guac</h2>
+            <p class="blog-date">September 10, 2023</p>
+            <p class="blog-excerpt">
+              These vibrant toasts on a black plate are a delicious and visually appealing snack. Two are topped with creamy avocado, the other with tuna cream. Fresh tomatoes and sprouts add a burst of flavor and color. A quick, healthy, and satisfying bite!</p>
+            <a href="https://pinchofyum.com/fruit-pizza" target="_blank" class="btn btn-primary blog-read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <a href="#" class="page-link active">1</a>
+    <a href="#" class="page-link">2</a>
+    <a href="#" class="page-link">3</a>
+    <a href="#" class="page-link">Next</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>Email: Qitchen@co.com</p>
+        <p>Phone: +92 234567890</p>
+        <p>Address: Gulberg, Faisalabad, Pakistan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qitchen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.querySelector('.hamburger-lines');
+    const menuItems = document.querySelector('.menu-items');
+
+    hamburger?.addEventListener('click', () => {
+      menuItems.classList.toggle('active');
+    });
+
+    // Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const blogPosts = document.querySelectorAll('.blog-post');
+
+    searchButton.addEventListener('click', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      blogPosts.forEach(post => {
+        const title = post.querySelector('h2').textContent.toLowerCase();
+        const excerpt = post.querySelector('.blog-excerpt').textContent.toLowerCase();
+        if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+          post.style.display = 'block';
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

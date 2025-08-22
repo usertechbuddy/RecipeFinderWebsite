@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qitchen - Food Recipe Finder with API Ninjas</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Source Serif 4', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #222222;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #777777;
+    }
+    .navbar {
+      background-color: #111111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 20px;
+      margin: 10px;
+    }
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+    .navbar .logo img {
+      height: 40px;
+      margin-right: 10px;
+      filter: brightness(0) invert(1);
+    }
+    .navbar .menu-items {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar .menu-items li {
+      margin: 0 1rem;
+    }
+    .navbar .menu-items a {
+      color: #ffffff;
+      font-weight: 500;
+      font-family: 'Source Serif 4', serif;
+    }
+    .navbar .menu-items a:hover {
+      color: #aaaaaa;
+    }
+    .navbar .hamburger-lines {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .navbar .hamburger-lines .line {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+    }
+    .main {
+      text-align: center;
+      padding: 4rem 2rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .main h1 {
+      font-family: 'Noto Serif Georgian', serif;
+      color: #111111;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    .search {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .search-box {
+      position: relative;
+      width: 320px;
+    }
+    .input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Source Serif 4', serif;
+    }
+    .btn-icon-content {
+      background: #111111;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 36px;
+      width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      color: white;
+    }
+    .btn-icon-content:hover {
+      background: #444444;
+    }
+    .recipe-result {
+      margin-top: 2rem;
+      text-align: left;
+      font-family: 'Source Serif 4', serif;
+      color: #222;
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      white-space: pre-wrap;
+      min-height: 150px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .loading {
+      font-style: italic;
+      color: #555;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    .recipe-card {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+    .recipe-card:last-child {
+      border-bottom: none;
+    }
+    .recipe-card h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.3rem;
+      color: #111;
+    }
+    .recipe-ingredients {
+      margin: 0.5rem 0;
+      padding-left: 1.2rem;
+    }
+    .footer {
+      background: #111111;
+      color: #aaaaaa;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 2rem;
+      border-radius: 10px 10px 0 0;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-section {
+      flex: 1 1 200px;
+    }
+    .footer-section h3 {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #dddddd;
+    }
+    .footer-section a {
+      color: #aaaaaa;
+      display: block;
+      margin: 0.5rem 0;
+      font-family: 'Source Serif 4', serif;
+      transition: color 0.3s ease;
+    }
+    .footer-section a:hover {
+      color: #ffffff;
+    }
+    .social-icons a {
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      color: #aaaaaa;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #ffffff;
+    }
+    .footer-bottom {
+      margin-top: 1rem;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      color: #777777;
+    }
+    @media (max-width: 768px) {
+      .navbar .menu-items {
+        display: none;
+        flex-direction: column;
+        background-color: #111111;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        border-radius: 0 0 20px 20px;
+      }
+      .navbar .menu-items.active {
+        display: flex;
+      }
+      .navbar .hamburger-lines {
+        display: flex;
+      }
+      .main h1 {
+        font-size: 2.2rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .search-box {
+        width: 90vw;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo1.png" alt="Qitchen Logo" />
+      <span>Qitchen</span>
+    </div>
+    <ul class="menu-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger-lines" role="button" aria-label="Toggle menu" tabindex="0">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <div class="main">
+    <h1>Food Recipe Finder</h1>
+    <div class="search">
+      <div class="search-box">
+        <div class="search-field">
+          <input placeholder="Search food or ingredients..." class="input" type="text" id="searchInput" aria-label="Enter ingredients" />
+          <button class="btn-icon-content" id="searchButton" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512" width="24" height="24" aria-hidden="true" focusable="false">
+              <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="recipeOutput" class="recipe-result" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>Email: Qitchen@co.com</p>
+        <p>Phone: +92 234567890</p>
+        <p>Address: Gulberg, Faisalabad, Pakistan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qitchen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.querySelector('.hamburger-lines');
+    const menuItems = document.querySelector('.menu-items');
+    hamburger.addEventListener('click', () => {
+      menuItems.classList.toggle('active');
+    });
+
+    const searchButton = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
+    const recipeOutput = document.getElementById('recipeOutput');
+
+    async function generateRecipe(query) {
+      recipeOutput.innerHTML = '';
+      if (!query.trim()) {
+        recipeOutput.innerHTML = '<p class="error">Please enter a search term to find recipes.</p>';
+        return;
+      }
+      recipeOutput.innerHTML = '<p class="loading">Searching for recipes, please wait...</p>';
+
+      try {
+        const response = await fetch('https://api.api-ninjas.com/v1/recipe?query=' + encodeURIComponent(query), {
+          method: 'GET',
+          headers: { 'X-Api-Key': 'MkiS/TqnFYbCxh1TQljyJA==8Oq7UF3OAxhWioq0' },
+          contentType: 'application/json',
+        });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        if (data.length === 0) {
+          recipeOutput.innerHTML = '<p class="error">No recipes found for "' + query + '".</p>';
+          return;
+        }
+
+        // Format and display recipes
+        recipeOutput.innerHTML = '';
+        data.forEach((recipe, index) => {
+          const recipeCard = document.createElement('div');
+          recipeCard.className = 'recipe-card';
+
+          const title = document.createElement('h3');
+          title.textContent = recipe.title || `Recipe ${index + 1}`;
+          recipeCard.appendChild(title);
+
+          // Handle ingredients robustly:
+          let ingredientsArray = [];
+          if (Array.isArray(recipe.ingredients)) {
+            ingredientsArray = recipe.ingredients;
+          } else if (typeof recipe.ingredients === 'string') {
+            // Try splitting by newline or comma
+            ingredientsArray = recipe.ingredients.split(/\r?\n|,/).map(s => s.trim()).filter(Boolean);
+          }
+
+          if (ingredientsArray.length > 0) {
+            const ingTitle = document.createElement('strong');
+            ingTitle.textContent = 'Ingredients:';
+            recipeCard.appendChild(ingTitle);
+
+            const ingList = document.createElement('ul');
+            ingList.className = 'recipe-ingredients';
+            ingredientsArray.forEach(item => {
+              const li = document.createElement('li');
+              li.textContent = item;
+              ingList.appendChild(li);
+            });
+            recipeCard.appendChild(ingList);
+          }
+
+          if (recipe.instructions) {
+            const instructions = document.createElement('p');
+            instructions.textContent = 'Instructions: ' + recipe.instructions;
+            recipeCard.appendChild(instructions);
+          }
+
+          recipeOutput.appendChild(recipeCard);
+        });
+      } catch (error) {
+        recipeOutput.innerHTML = `<p class="error">Error fetching recipes: ${error.message}</p>`;
+      }
+    }
+
+    searchButton.addEventListener('click', () => {
+      generateRecipe(searchInput.value);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        generateRecipe(searchInput.value);
+      }
+    });
+  </script>
+</body>
+</html>
+

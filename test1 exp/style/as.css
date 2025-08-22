@@ -1,0 +1,242 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff7e6; /* Light saffron background */
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(135deg, #6a1b9a, #8e44ad); /* Purple gradient */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 20px; /* Rounded edges */
+  margin: 10px;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-family: 'Pacifico', cursive;
+}
+
+.navbar .logo span {
+  margin-left: 0.5rem;
+}
+
+.navbar .menu-items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .menu-items li {
+  margin: 0 1rem;
+}
+
+.navbar .menu-items a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu-items a:hover {
+  color: #ffcc80; /* Light saffron */
+}
+
+.navbar .hamburger-lines {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.navbar .hamburger-lines .line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+.navbar .logo1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-family: 'Envato';
+}
+
+.navbar .logo1 img {
+  height: 40px;
+  margin-right: 10px;
+}
+/* About Section */
+.about-section {
+  padding: 4rem 2rem;
+  background-color: #fff7e6; /* Light saffron background */
+  text-align: center;
+}
+
+.about-section h1 {
+  font-size: 2.5rem;
+  color: #6a1b9a; /* Purple */
+  margin-bottom: 1rem;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+/* Team Section */
+.team-section {
+  margin-top: 2rem;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  color: #6a1b9a; /* Purple */
+  margin-bottom: 2rem;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-member {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.team-member h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.team-member .role {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.team-member .bio {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Footer Styles */
+footer {
+  background: linear-gradient(135deg, #333, #444); /* Dark gradient */
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer .footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+footer .footer-section {
+  margin: 1rem 0;
+}
+
+footer .footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+footer .footer-section a {
+  color: #ff9933; /* Saffron */
+  display: block;
+  margin: 0.5rem 0;
+}
+
+footer .footer-section a:hover {
+  color: #ffe6cc; /* Light saffron */
+}
+
+footer .footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar .menu-items {
+    display: none;
+    flex-direction: column;
+    background-color: #6a1b9a; /* Purple */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .navbar .menu-items.active {
+    display: flex;
+  }
+
+  .navbar .hamburger-lines {
+    display: flex;
+  }
+
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    max-width: 100%;
+  }
+}

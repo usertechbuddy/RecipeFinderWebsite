@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Qitchen</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;700&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Icons and external stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      font-family: 'Source Serif 4', serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Noto Serif Georgian', serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo1 span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+      color: #ffffff;
+    }
+
+    .navbar img {
+      height: 40px;
+    }
+
+    .menu-items {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .menu-items li a {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .hamburger-lines {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger-lines .line {
+      width: 25px;
+      height: 3px;
+      background: #ffffff;
+      margin: 5px 0;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .about-description {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+      color: #333333;
+    }
+
+    /* Team Section */
+    .team-section {
+      margin-top: 3rem;
+    }
+
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      background: #f7f7f7;
+      border: 1px solid #e0e0e0;
+      padding: 1.5rem;
+      width: 280px;
+      border-radius: 8px;
+    }
+
+    .team-member img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .role {
+      font-style: italic;
+      color: #555555;
+      margin: 0.5rem 0;
+    }
+
+    .bio {
+      font-size: 0.95rem;
+      color: #333333;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      padding: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #e0e0e0;
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+
+    .social-icons a {
+      color: #e0e0e0;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaaaaa;
+    }
+
+    @media (max-width: 768px) {
+      .menu-items {
+        display: none;
+        flex-direction: column;
+        background: #1a1a1a;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+      }
+
+      .menu-items.active {
+        display: flex;
+      }
+
+      .hamburger-lines {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo1">
+      <img src="images/logo1.png" alt="Qitchen Logo" />
+      <span>Qitchen</span>
+    </div>
+    <ul class="menu-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger-lines">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h1>About Us</h1>
+    <p class="about-description">
+      Welcome to <strong>Qitchen</strong>, It is your personal culinary companion, generating unique recipes tailored to your ingredients, dietary needs, and culinary preferences. Say goodbye to recipe ruts and hello to exciting new dishes created just for you!
+    </p>
+
+    <div class="team-section">
+      <h2>Our Team</h2>
+      <div class="team-container">
+        <div class="team-member">
+          <img src="images/p.jpg" alt="Aliha Asad" />
+          <h3>Aliha Asad</h3>
+          <p class="role">Co-Founder & Head Chef</p>
+          <p class="bio">
+            Aliha Asad, co-founder and Head Chef of Qitcehn, is the culinary heart behind its innovative recipe generator. With a lifetime of experience from South East Asain roots to formal training, she designed the algorithms ensuring delicious, achievable recipes for everyone. Aliha's passion inspires creativity, empowering users to explore flavors and discover the joy of cooking with Qitchen.
+          </p>
+        </div>
+
+        <div class="team-member">
+          <img src="images/p2.jpg" alt="Mubshra Rehman" />
+          <h3>Mubshra Rehman</h3>
+          <p class="role">Co-Founder & Food Blogger</p>
+          <p class="bio">
+            Mubshra Rehman, co-founder and the food blogger behind Qitchen, connects users with personalized recipes through compelling stories and stunning visuals. Drawing on years of blogging experience at Buzzfeed, she transforms generated recipes into engaging culinary adventures, making Qitchen a source of inspiration and community for food lovers.
+          </p>
+        </div>
+
+        <div class="team-member">
+          <img src="images/p3.jpg" alt="Maham Faisal" />
+          <h3>Maham Faisal</h3>
+          <p class="role">Co-Founder & Creative Director</p>
+          <p class="bio">
+            Maham Faisal, co-founder and Creative Director of Qitchen, shapes the platform's user experience and visual identity. With expertise in UI designing, she transforms complex recipe generation into a delightful and intuitive experience, making Qitchen visually appealing and user-friendly for everyone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>Email: Qitchen@co.com</p>
+        <p>Phone: +92 234567890</p>
+        <p>Address: Gulberg, Faisalabad, Pakistan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Qitchen. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger-lines');
+    const menuItems = document.querySelector('.menu-items');
+
+    hamburger.addEventListener('click', () => {
+      menuItems.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
